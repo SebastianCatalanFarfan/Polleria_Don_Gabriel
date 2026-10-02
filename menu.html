@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú - Pollería Don Gabriel</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin:0; 
+            padding:0; 
+            background-color:#fff8e1; 
+            color:#000000; 
+        }
+        header { 
+            background-color:#000000; 
+            color:#FFD700; 
+            padding:20px 0; 
+            text-align:center; 
+            font-size:2em; 
+            font-weight:bold; 
+        }
+        nav { 
+            display: grid; 
+            grid-template-columns: 1fr auto 1fr; 
+            align-items: center; 
+            padding: 10px 50px;
+            background-color:#FFD700; 
+        }
+        nav a { 
+            color:#000000; 
+            text-decoration:none; 
+            margin:0 15px; 
+            font-weight:bold; 
+            font-size:1.1em; 
+        }
+        nav a:hover { 
+            text-decoration:underline; 
+        }
+        .nav-center {
+            display: flex; 
+            justify-content: center; 
+            gap: 20px;
+        }
+        .nav-right {
+            display: flex; 
+            justify-content: flex-end;
+        }
+        section { 
+            padding:40px 20px; 
+            text-align:center; 
+        }
+        h2 { 
+            color:#000000; 
+            margin-bottom:20px; 
+        }
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .category-btn {
+            background-color: #FFD700;
+            color: #000000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .category-btn.active {
+            background-color: #000000;
+            color: #FFD700;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .menu-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .menu-card:hover {
+            transform: translateY(-5px);
+        }
+        .menu-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .menu-card-content {
+            padding: 15px;
+        }
+        .menu-card h3 {
+            margin-top: 0;
+            color: #000000;
+        }
+        .menu-card p {
+            color: #333;
+            margin: 10px 0;
+        }
+        .menu-card .price {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #000000;
+            margin: 10px 0;
+        }
+        .menu-card button {
+            background-color: #000000;
+            color: #FFD700;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .menu-card button:hover {
+            background-color: #333333;
+        }
+        #cart {
+            border-top: 2px solid #000000;
+            margin-top: 30px;
+            padding-top: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .cart-total {
+            font-weight: bold;
+            font-size: 1.2em;
+            text-align: right;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #000000;
+        }
+        .checkout-btn {
+            background-color: #000000;
+            color: #FFD700;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+        }
+        .checkout-btn:hover {
+            background-color: #333333;
+        }
+        .empty-cart {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header>Pollería Don Gabriel</header>
+
+    <nav>
+        <div></div>
+        <div class="nav-center">
+            <a href="index.html">Inicio</a>
+            <a href="menu.html">Menú</a>
+            <a href="promos.html">Promos</a>
+            <a href="pedidos.html">Pedidos</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="nav-right">
+            <a href="admin-login.html" style="background: #000000; color: #FFD700; padding: 5px 15px; border-radius: 5px; font-size: 0.9em;">Admin</a>
+        </div>
+    </nav>
+
+    <section>
+        <h2>Nuestro Menú</h2>
+        <p>Descubre nuestra deliciosa selección de platos preparados con ingredientes frescos y nuestra receta secreta</p>
+        
+        <div class="menu-categories">
+            <button class="category-btn active" data-category="all">Todos</button>
+            <button class="category-btn" data-category="pollo">Pollo a la Brasa</button>
+            <button class="category-btn" data-category="combos">Combos</button>
+            <button class="category-btn" data-category="guarniciones">Guarniciones</button>
+            <button class="category-btn" data-category="bebidas">Bebidas</button>
+        </div>
+        
+        <div class="menu-grid" id="menu"></div>
+
+        <h2>Tu Pedido</h2>
+        <div id="cart">
+            <div class="empty-cart">Tu carrito está vacío</div>
+        </div>
+        <button class="checkout-btn" onclick="checkout()">Realizar Pedido</button>
+    </section>
+
+    <script>
+        const API_URL = 'PEGA_AQUI_TU_URL_DE_API'; // Reemplaza con tu Apps Script
+        let menuData = [];
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        let currentCategory = 'all';
+
+        // Datos de ejemplo con imágenes locales
+        const sampleMenuData = [
+            // Pollo a la Brasa
+            { 
+                id: 1, 
+                nombre: "1/4 Pollo a la Brasa", 
+                descripcion: "1/4 de nuestro delicioso pollo a la brasa acompañado de papas fritas y ensalada fresca", 
+                precio: 18.90, 
+                categoria: "pollo", 
+                imagen: "images/cuarto-pollo.jpg" 
+            },
+            { 
+                id: 2, 
+                nombre: "1/2 Pollo a la Brasa", 
+                descripcion: "1/2 pollo a la brasa con papas fritas, ensalada y nuestra salsa especial", 
+                precio: 32.90, 
+                categoria: "pollo", 
+                imagen: "images/medio-pollo.jpg" 
+            },
+            { 
+                id: 3, 
+                nombre: "Pollo Entero a la Brasa", 
+                descripcion: "Pollo entero a la brasa, ideal para 3-4 personas. Incluye papas fritas, ensalada y salsas", 
+                precio: 55.90, 
+                categoria: "pollo", 
+                imagen: "images/pollo-entero.jpg" 
+            },
+            
+            // Combos
+            { 
+                id: 4, 
+                nombre: "Combo Familiar", 
+                descripcion: "Pollo entero + papas fritas grandes + ensalada grande + 4 gaseosas 500ml", 
+                precio: 79.90, 
+                categoria: "combos", 
+                imagen: "images/combo-familiar.png" 
+            },
+            { 
+                id: 5, 
+                nombre: "Combo Pareja", 
+                descripcion: "1/2 pollo + papas fritas medianas + ensalada + 2 gaseosas 500ml", 
+                precio: 42.90, 
+                categoria: "combos", 
+                imagen: "images/combo-pareja.png" 
+            },
+            { 
+                id: 6, 
+                nombre: "Combo Personal", 
+                descripcion: "1/4 pollo + papas fritas personales + ensalada + 1 gaseosa 500ml", 
+                precio: 24.90, 
+                categoria: "combos", 
+                imagen: "images/combo-personal.png" 
+            },
+            
+            // Guarniciones
+            { 
+                id: 7, 
+                nombre: "Papas Fritas", 
+                descripcion: "Porción de papas fritas crujientes", 
+                precio: 8.90, 
+                categoria: "guarniciones", 
+                imagen: "images/papas-fritas.jpg" 
+            },
+            { 
+                id: 8, 
+                nombre: "Ensalada Fresca", 
+                descripcion: "Ensalada de lechuga, tomate, cebolla y aceitunas", 
+                precio: 7.90, 
+                categoria: "guarniciones", 
+                imagen: "images/ensalada.jpg" 
+            },
+            { 
+                id: 9, 
+                nombre: "Arroz Chaufa", 
+                descripcion: "Delicioso arroz chaufa con verduras y tortilla", 
+                precio: 9.90, 
+                categoria: "guarniciones", 
+                imagen: "images/arroz-chaufa.jpg" 
+            },
+            
+            // Bebidas
+            { 
+                id: 10, 
+                nombre: "Gaseosa 500ml", 
+                descripcion: "Coca Cola, Inca Kola, Sprite o Fanta", 
+                precio: 4.50, 
+                categoria: "bebidas", 
+                imagen: "images/gaseosa.jpg" 
+            },
+            { 
+                id: 11, 
+                nombre: "Gaseosa 1L", 
+                descripcion: "Coca Cola, Inca Kola, Sprite o Fanta", 
+                precio: 7.90, 
+                categoria: "bebidas", 
+                imagen: "images/gaseosa-1litro.png" 
+            },
+            { 
+                id: 12, 
+                nombre: "Chicha Morada", 
+                descripcion: "Refrescante chicha morada tradicional", 
+                precio: 5.90, 
+                categoria: "bebidas", 
+                imagen: "images/chicha-morada.jpg" 
+            }
+        ];
+
+        function renderCart() {
+            const cartDiv = document.getElementById('cart');
+            cartDiv.innerHTML = '';
+            
+            if (carrito.length === 0) {
+                cartDiv.innerHTML = '<div class="empty-cart">Tu carrito está vacío</div>';
+                return;
+            }
+            
+            let total = 0;
+            carrito.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'cart-item';
+                div.innerHTML = `
+                    <span>${item.nombre}</span>
+                    <span>S/. ${item.precio.toFixed(2)}</span>
+                `;
+                cartDiv.appendChild(div);
+                total += item.precio;
+            });
+            
+            const totalDiv = document.createElement('div');
+            totalDiv.className = 'cart-total';
+            totalDiv.innerHTML = `Total: S/. ${total.toFixed(2)}`;
+            cartDiv.appendChild(totalDiv);
+        }
+
+        function addToCart(item) {
+            carrito.push(item);
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            renderCart();
+            
+            // Mostrar notificación
+            const notification = document.createElement('div');
+            notification.textContent = `${item.nombre} agregado al carrito`;
+            notification.style.position = 'fixed';
+            notification.style.top = '20px';
+            notification.style.right = '20px';
+            notification.style.backgroundColor = '#000000';
+            notification.style.color = '#FFD700';
+            notification.style.padding = '10px 20px';
+            notification.style.borderRadius = '5px';
+            notification.style.zIndex = '1000';
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                document.body.removeChild(notification);
+            }, 3000);
+        }
+
+        function renderMenu() {
+            const menuDiv = document.getElementById('menu');
+            menuDiv.innerHTML = '';
+            
+            const filteredData = currentCategory === 'all' 
+                ? menuData 
+                : menuData.filter(item => item.categoria === currentCategory);
+            
+            filteredData.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'menu-card';
+                div.innerHTML = `
+                    <img src="${item.imagen}" alt="${item.nombre}">
+                    <div class="menu-card-content">
+                        <h3>${item.nombre}</h3>
+                        <p>${item.descripcion}</p>
+                        <div class="price">S/. ${item.precio.toFixed(2)}</div>
+                        <button onclick="addToCart({id: ${item.id}, nombre: '${item.nombre}', precio: ${item.precio}})">Agregar al Carrito</button>
+                    </div>
+                `;
+                menuDiv.appendChild(div);
+            });
+        }
+
+        function checkout() {
+            if (carrito.length === 0) {
+                alert('Tu carrito está vacío. Agrega algunos productos antes de continuar.');
+                return;
+            }
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            window.location.href = 'pedidos.html';
+        }
+
+        // Inicializar categorías
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentCategory = this.getAttribute('data-category');
+                renderMenu();
+            });
+        });
+
+        // Cargar datos del menú
+        function loadMenuData() {
+            // Si tienes una API configurada, usa este código:
+            /*
+            fetch(API_URL)
+                .then(res => res.json())
+                .then(data => {
+                    menuData = data.menu.slice(1); // saltamos encabezados
+                    renderMenu();
+                })
+                .catch(err => {
+                    console.log(err);
+                    // Si hay error, usar datos de ejemplo
+                    menuData = sampleMenuData;
+                    renderMenu();
+                });
+            */
+            
+            // Por ahora, usar datos de ejemplo
+            menuData = sampleMenuData;
+            renderMenu();
+        }
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', function() {
+            loadMenuData();
+            renderCart();
+        });
+    </script>
+</body>
+</html>

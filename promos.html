@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promociones - Pollería Don Gabriel</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin:0; 
+            padding:0; 
+            background-color:#fff8e1; 
+            color:#000000; 
+        }
+        header { 
+            background-color:#000000; 
+            color:#FFD700; 
+            padding:20px 0; 
+            text-align:center; 
+            font-size:2em; 
+            font-weight:bold; 
+        }
+        nav { 
+            display: grid; 
+            grid-template-columns: 1fr auto 1fr; 
+            align-items: center; 
+            padding: 10px 50px; 
+            background-color:#FFD700;
+        }
+        nav a { 
+            color:#000000; 
+            text-decoration:none; 
+            margin:0 15px; 
+            font-weight:bold; 
+            font-size:1.1em; 
+        }
+        nav a:hover { 
+            text-decoration:underline; 
+        }
+        section { 
+            padding:40px 20px; 
+            text-align:center; 
+        }
+        h2 { 
+            color:#000000; 
+            margin-bottom:20px; 
+        }
+        .promo-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/promo-hero.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 20px;
+            margin-bottom: 40px;
+        }
+        .promo-hero h2 {
+            color: #FFD700;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .promo-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        .promo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        .promo-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #FFD700;
+            color: #000000;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+            z-index: 2;
+        }
+        .promo-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        .promo-content {
+            padding: 25px;
+        }
+        .promo-card h3 {
+            color: #000000;
+            margin-top: 0;
+            font-size: 1.4em;
+        }
+        .promo-card p {
+            color: #666;
+            line-height: 1.6;
+            margin: 15px 0;
+        }
+        .promo-price {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .current-price {
+            font-size: 2em;
+            font-weight: bold;
+            color: #000000;
+        }
+        .original-price {
+            font-size: 1.2em;
+            color: #999;
+            text-decoration: line-through;
+        }
+        .discount {
+            background: #ff4444;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .promo-features {
+            text-align: left;
+            margin: 20px 0;
+        }
+        .promo-features li {
+            margin: 8px 0;
+            color: #555;
+        }
+        .promo-btn {
+            background-color: #000000;
+            color: #FFD700;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        .promo-btn:hover {
+            background-color: #333333;
+        }
+        .promo-timer {
+            background: #f8f8f8;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #FFD700;
+        }
+        .timer-text {
+            font-weight: bold;
+            color: #000000;
+            margin-bottom: 8px;
+        }
+        .timer-numbers {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .timer-unit {
+            background: #000000;
+            color: #FFD700;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            min-width: 50px;
+        }
+        .limited-offer {
+            background: linear-gradient(45deg, #FFD700, #ffed4e);
+            color: #000000;
+            padding: 40px 20px;
+            margin: 40px 0;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>Pollería Don Gabriel</header>
+    <nav style="display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 10px 50px; background-color:#FFD700;">
+        <div></div>
+        <div style="display: flex; justify-content: center; gap: 20px;">
+            <a href="index.html">Inicio</a>
+            <a href="menu.html">Menú</a>
+            <a href="promos.html">Promos</a>
+            <a href="pedidos.html">Pedidos</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="contacto.html">Contacto</a>
+        </div>
+        <div style="display: flex; justify-content: flex-end;">
+            <a href="admin-login.html" style="background: #000000; color: #FFD700; padding: 5px 15px; border-radius: 5px; font-size: 0.9em;">Admin</a>
+        </div>
+    </nav>
+
+    <section class="promo-hero">
+        <h2>¡Promociones Especiales!</h2>
+        <p style="font-size: 1.2em; max-width: 600px; margin: 0 auto;">Aprovecha nuestras ofertas exclusivas y disfruta del mejor pollo a la brasa con descuentos increíbles</p>
+    </section>
+
+    <section>
+        <div class="limited-offer">
+            <h2 style="color: #000000;">🔥 OFERTA RELÁMPAGO 🔥</h2>
+            <p style="font-size: 1.3em; font-weight: bold;">Válida solo por 24 horas</p>
+        </div>
+
+        <div class="promo-grid" id="promos">
+            <!-- Las promociones se cargarán aquí -->
+        </div>
+    </section>
+
+    <script>
+        const API_URL = 'PEGA_AQUI_TU_URL_DE_API';
+
+        // Datos de ejemplo para promociones con imágenes locales
+        const samplePromos = [
+            {
+                id: 1,
+                nombre: "Combo Familiar Especial",
+                descripcion: "Perfecto para compartir en familia. Incluye pollo entero a la brasa, papas fritas familiares, ensalada grande, 4 gaseosas 500ml y nuestras salsas especiales.",
+                precio_actual: 69.90,
+                precio_original: 89.90,
+                imagen: "images/combo-familiar.png",
+                duracion: "2024-12-31",
+                destacado: true
+            },
+            {
+                id: 2,
+                nombre: "Martes de Pollo",
+                descripcion: "Todos los martes disfruta de 1/2 pollo a la brasa + 2 guarniciones personales + 2 gaseosas 500ml a un precio especial.",
+                precio_actual: 32.90,
+                precio_original: 38.90,
+                imagen: "images/martes-pollo.png",
+                duracion: "Válido todos los martes",
+                destacado: false
+            },
+            {
+                id: 3,
+                nombre: "Combo Pareja Romántica",
+                descripcion: "1/2 pollo a la brasa, papas fritas corazón, ensalada especial, 2 gaseosas 500ml y postre de brownie para compartir.",
+                precio_actual: 45.90,
+                precio_original: 55.90,
+                imagen: "images/combo-pareja.png",
+                duracion: "2024-12-31",
+                destacado: false
+            },
+            {
+                id: 4,
+                nombre: "Pollo Loco",
+                descripcion: "Pollo entero a la brasa + papas fritas gigantes + ensalada familiar + 1 litro de chicha morada + 4 porciones de postre.",
+                precio_actual: 79.90,
+                precio_original: 99.90,
+                imagen: "images/promo-especial.png",
+                duracion: "2024-12-31",
+                destacado: true
+            },
+            {
+                id: 5,
+                nombre: "Combo Desayuno Dominguero",
+                descripcion: "1/4 pollo a la brasa + papas fritas + ensalada + 1 gaseosa 500ml. Perfecto para empezar el domingo con energía.",
+                precio_actual: 19.90,
+                precio_original: 24.90,
+                imagen: "images/combo-personal.png",
+                duracion: "Válido solo domingos hasta medio día",
+                destacado: false
+            },
+            {
+                id: 6,
+                nombre: "Mega Combo Familiar",
+                descripcion: "2 pollos enteros a la brasa + papas fritas gigantes + ensalada familiar + 6 gaseosas 1L + 6 porciones de postre.",
+                precio_actual: 149.90,
+                precio_original: 189.90,
+                imagen: "images/mega-combo.jpg",
+                duracion: "2024-12-31",
+                destacado: true
+            }
+        ];
+
+        function renderPromos(data) {
+            const promosDiv = document.getElementById('promos');
+            promosDiv.innerHTML = '';
+            
+            data.forEach(promo => {
+                const discount = Math.round(((promo.precio_original - promo.precio_actual) / promo.precio_original) * 100);
+                
+                const div = document.createElement('div');
+                div.className = 'promo-card';
+                div.innerHTML = `
+                    ${promo.destacado ? '<div class="promo-badge">🔥 POPULAR</div>' : ''}
+                    <img src="${promo.imagen}" alt="${promo.nombre}">
+                    <div class="promo-content">
+                        <h3>${promo.nombre}</h3>
+                        <p>${promo.descripcion}</p>
+                        
+                        <div class="promo-price">
+                            <span class="current-price">S/. ${promo.precio_actual.toFixed(2)}</span>
+                            <span class="original-price">S/. ${promo.precio_original.toFixed(2)}</span>
+                            <span class="discount">-${discount}%</span>
+                        </div>
+                        
+                        <div class="promo-timer">
+                            <div class="timer-text">⏰ Oferta disponible hasta:</div>
+                            <div class="timer-text">${promo.duracion}</div>
+                        </div>
+                        
+                        <button class="promo-btn" onclick="addToCart({
+                            id: ${promo.id},
+                            nombre: '${promo.nombre}',
+                            precio: ${promo.precio_actual}
+                        })">Agregar al Carrito</button>
+                    </div>
+                `;
+                promosDiv.appendChild(div);
+            });
+        }
+
+        function addToCart(item) {
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            carrito.push(item);
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            
+            // Mostrar notificación
+            alert(`¡${item.nombre} agregado al carrito!`);
+        }
+
+        // Cargar promociones
+        function loadPromos() {
+            // Si tienes API, usa esto:
+            /*
+            fetch(API_URL)
+                .then(res => res.json())
+                .then(data => {
+                    renderPromos(data.promos.slice(1));
+                })
+                .catch(err => {
+                    console.log(err);
+                    renderPromos(samplePromos);
+                });
+            */
+            
+            // Por ahora usar datos de ejemplo
+            renderPromos(samplePromos);
+        }
+
+        document.addEventListener('DOMContentLoaded', loadPromos);
+    </script>
+</body>
+</html>

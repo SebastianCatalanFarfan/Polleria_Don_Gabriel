@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Pollería Don Gabriel</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin:0; 
+            padding:0; 
+            background-color:#fff8e1; 
+            color:#000000; 
+        }
+        header { 
+            background-color:#000000; 
+            color:#FFD700; 
+            padding:20px 0; 
+            text-align:center; 
+            font-size:2em; 
+            font-weight:bold; 
+        }
+        nav { 
+            background-color:#FFD700; 
+            display:flex; 
+            justify-content:center; 
+            padding:10px 0; 
+        }
+        nav a { 
+            color:#000000; 
+            text-decoration:none; 
+            margin:0 15px; 
+            font-weight:bold; 
+            font-size:1.1em; 
+        }
+        nav a:hover { 
+            text-decoration:underline; 
+        }
+        
+        .login-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #000000;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+            box-sizing: border-box;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #FFD700;
+        }
+        
+        .submit-btn {
+            background-color: #000000;
+            color: #FFD700;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background-color: #333333;
+        }
+        
+        .message {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <header>Pollería Don Gabriel</header>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="menu.html">Menú</a>
+        <a href="promos.html">Promos</a>
+        <a href="pedidos.html">Pedidos</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="contacto.html">Contacto</a>
+    </nav>
+
+    <section>
+        <div class="login-container">
+            <h2>Acceso Administrador</h2>
+            <div class="form-group">
+                <label>Usuario:</label>
+                <input type="text" id="username" placeholder="Ingresa tu usuario">
+            </div>
+            <div class="form-group">
+                <label>Contraseña:</label>
+                <input type="password" id="password" placeholder="Ingresa tu contraseña">
+            </div>
+            <button class="submit-btn" onclick="login()">Ingresar</button>
+            <div id="message" class="message"></div>
+        </div>
+    </section>
+
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const messageDiv = document.getElementById('message');
+
+            // Credenciales simples
+            if (username === 'admin' && password === 'polleria123') {
+                localStorage.setItem('adminLoggedIn', 'true');
+                window.location.href = 'admin-panel.html';
+            } else {
+                messageDiv.textContent = 'Usuario o contraseña incorrectos';
+                messageDiv.className = 'message error';
+                messageDiv.style.display = 'block';
+            }
+        }
+
+        // Si ya está logueado, redirigir al panel
+        if (localStorage.getItem('adminLoggedIn') === 'true') {
+            window.location.href = 'admin-panel.html';
+        }
+    </script>
+</body>
+</html>

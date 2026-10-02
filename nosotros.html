@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros - Pollería Don Gabriel</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin:0; 
+            padding:0; 
+            background-color:#fff8e1; 
+            color:#000000; 
+        }
+        header { 
+            background-color:#000000; 
+            color:#FFD700; 
+            padding:20px 0; 
+            text-align:center; 
+            font-size:2em; 
+            font-weight:bold; 
+        }
+        nav { 
+            display: grid; 
+            grid-template-columns: 1fr auto 1fr; 
+            align-items: center; 
+            padding: 10px 50px;
+            background-color:#FFD700; 
+        }
+        nav a { 
+            color:#000000; 
+            text-decoration:none; 
+            margin:0 15px; 
+            font-weight:bold; 
+            font-size:1.1em; 
+        }
+        nav a:hover { 
+            text-decoration:underline; 
+        }
+        .nav-center {
+            display: flex; 
+            justify-content: center; 
+            gap: 20px;
+        }
+        .nav-right {
+            display: flex; 
+            justify-content: flex-end;
+        }
+        section { 
+            padding:40px 20px; 
+            text-align:center; 
+        }
+        h2 { 
+            color:#000000; 
+            margin-bottom:20px; 
+        }
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/nosotros-hero.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+        .hero-section h1 {
+            color: #FFD700;
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        .hero-section p {
+            font-size: 1.3em;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin: 50px 0;
+        }
+        .about-text {
+            text-align: left;
+        }
+        .about-text h3 {
+            color: #000000;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .about-text p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+        .about-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .values-section {
+            background: #000000;
+            color: #FFD700;
+            padding: 80px 20px;
+            margin: 50px 0;
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .value-card {
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .value-card:hover {
+            transform: translateY(-10px);
+        }
+        .value-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        .value-card h4 {
+            color: #FFD700;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+        .team-section {
+            margin: 80px 0;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .team-member {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid #FFD700;
+        }
+        .team-member h4 {
+            color: #000000;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+        .team-member .role {
+            color: #FFD700;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .timeline {
+            max-width: 800px;
+            margin: 50px auto;
+            position: relative;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #FFD700;
+            transform: translateX(-50%);
+        }
+        .timeline-item {
+            margin: 40px 0;
+            position: relative;
+        }
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            width: 45%;
+            position: relative;
+        }
+        .timeline-item:nth-child(odd) .timeline-content {
+            left: 0;
+        }
+        .timeline-item:nth-child(even) .timeline-content {
+            left: 55%;
+        }
+        .timeline-year {
+            background: #000000;
+            color: #FFD700;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+        }
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .timeline::before {
+                left: 30px;
+            }
+            .timeline-content {
+                width: calc(100% - 80px);
+                left: 80px !important;
+            }
+            .timeline-year {
+                left: 30px;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>Pollería Don Gabriel</header>
+    <nav>
+        <div></div>
+        <div class="nav-center">
+            <a href="index.html">Inicio</a>
+            <a href="menu.html">Menú</a>
+            <a href="promos.html">Promos</a>
+            <a href="pedidos.html">Pedidos</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="nav-right">
+            <a href="admin-login.html" style="background: #000000; color: #FFD700; padding: 5px 15px; border-radius: 5px; font-size: 0.9em;">Admin</a>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <h1>Nuestra Historia</h1>
+        <p>Más de 25 años sirviendo el mejor pollo a la brasa de Cusco, con el sabor auténtico que nos caracteriza</p>
+    </section>
+
+    <section class="content-section">
+        <div class="about-grid">
+            <div class="about-text">
+                <h3>Desde 1998, Sabor y Tradición</h3>
+                <p>Pollería Don Gabriel nació del sueño de Gabriel Mendoza, un apasionado cocinero cusqueño que quería compartir con su comunidad el auténtico sabor del pollo a la brasa preparado con recetas familiares transmitidas por generaciones.</p>
+                <p>Lo que comenzó como un pequeño local familiar en el corazón de Cusco, hoy se ha convertido en un referente gastronómico de la región, manteniendo siempre nuestra esencia: ingredientes frescos, preparación artesanal y el servicio cálido que nos caracteriza.</p>
+                <p>Cada pollo que servimos lleva el sello de nuestra tradición - marinado por 24 horas en nuestras especias secretas y cocido lentamente a la brasa para lograr ese dorado perfecto y sabor inigualable.</p>
+            </div>
+            <div class="about-image">
+                <img src="images/fundador.jpg" alt="Fundador Don Gabriel">
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section">
+        <h2>Nuestros Valores</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">🥇</div>
+                <h4>Calidad Premium</h4>
+                <p>Seleccionamos los mejores ingredientes y mantenemos los más altos estándares de preparación.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">👨‍👩‍👧‍👦</div>
+                <h4>Tradición Familiar</h4>
+                <p>Recetas transmitidas por generaciones y el trato cálido que nos distingue.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🔥</div>
+                <h4>Autenticidad</h4>
+                <p>Mantenemos los métodos tradicionales de preparación que garantizan nuestro sabor único.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🤝</div>
+                <h4>Compromiso</h4>
+                <p>Con nuestra comunidad y con cada cliente que nos honra con su preferencia.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <h2>Nuestro Equipo</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="images/chef-gabriel.jpg" alt="Gabriel Mendoza">
+                <h4>Gabriel Mendoza</h4>
+                <div class="role">Fundador & Chef Principal</div>
+                <p>Con 25 años de experiencia, Gabriel supervisa cada preparación personalmente.</p>
+            </div>
+            <div class="team-member">
+                <img src="images/gerente-maria.jpg" alt="María Mendoza">
+                <h4>María Mendoza</h4>
+                <div class="role">Gerente General</div>
+                <p>Hija de Gabriel, continúa con la tradición familiar y la excelencia en el servicio.</p>
+            </div>
+            <div class="team-member">
+                <img src="images/parrillero-carlos.jpg" alt="Carlos Rojas">
+                <h4>Carlos Rojas</h4>
+                <div class="role">Maestro Parrillero</div>
+                <p>Especialista en el punto exacto del pollo a la brasa con 15 años en Don Gabriel.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Nuestra Historia en el Tiempo</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-year">1998</div>
+                <div class="timeline-content">
+                    <h4>Inicio del Sueño</h4>
+                    <p>Don Gabriel abre las puertas de su pequeño local familiar en el centro de Cusco.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2005</div>
+                <div class="timeline-content">
+                    <h4>Primera Expansión</h4>
+                    <p>Tras 7 años de éxito, ampliamos nuestro local para atender a más clientes.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2012</div>
+                <div class="timeline-content">
+                    <h4>Reconocimiento Local</h4>
+                    <p>Ganamos el premio al "Mejor Pollo a la Brasa de Cusco" por primera vez.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2020</div>
+                <div class="timeline-content">
+                    <h4>Servicio Delivery</h4>
+                    <p>Implementamos servicio a domicilio para llegar a todos los hogares cusqueños.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2024</div>
+                <div class="timeline-content">
+                    <h4>Presente y Futuro</h4>
+                    <p>Seguimos creciendo, manteniendo nuestra esencia y calidad de siempre.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
